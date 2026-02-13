@@ -66,15 +66,15 @@ architecture top_basys3_arch of top_basys3 is
    end component ripple_adder;
 
     -- declare any signals you will need	
-  --  signal w_addends     : std_logic_vector(7 downto 0) := x"00"; -- the numbers being added
---signal w_sum         : std_logic_vector(3 downto 0) := x"0";
-	--signal w_Cin, w_Cout : std_logic;
+    signal w_addends     : std_logic_vector(7 downto 0) := x"00"; -- the numbers being added
+    signal w_sum         : std_logic_vector(3 downto 0) := x"0";
+	signal w_Cin, w_Cout : std_logic;
   
 begin
 	-- PORT MAPS --------------------
 	name: ripple_adder
 	port map
-	(Cin => sw(0), 
+	( Cin => sw(0), 
 	A(0) => sw(1), 
 	A(1) => sw(2), 
 	A(2) => sw(3), 
