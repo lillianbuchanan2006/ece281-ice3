@@ -44,16 +44,15 @@ begin
 	
 	   -- Test all zeros input
 	   w_addends <= x"00"; w_Cin <= '0'; wait for 10 ns;
-	       assert (w_sum = x"0" and w_Cout = '0') report "bad with zeros" severity failure;
+	       assert (w_sum = x"0" and w_Cout = '0') report "bad with zeros" severity failure; -- min
        -- Test all ones input
        w_addends <= x"FF"; w_Cin <= '1'; wait for 10 ns;
-	       assert (w_sum = x"F" and w_Cout = '1') report "bad with ones" severity failure;
+	       assert (w_sum = x"F" and w_Cout = '1') report "bad with ones" severity failure; -- max 
        -- TODO, a few other test cases
-       --w_addends <= x"00"; w_Cin <= '1'; wait for 10 ns;
-	       --assert (w_sum = x"01" and w_Cout = '0') report "bad with 0+0+Cin" severity failure;
-	--   w_addends <= x"0F"; w_Cin <= '1'; wait for 10 ns;
-	--       assert (w_sum = x"10" and w_Cout = '0') report "bad with ones" severity failure;
-	
+       w_addends <= x"00"; w_Cin <= '1'; wait for 10 ns;
+	       assert (w_sum = x"1" and w_Cout = '0') report "bad with 0+0+Cin" severity failure; -- easy to forget 
+	   w_addends <= x"11"; w_Cin <= '1'; wait for 10 ns;
+	      assert (w_sum = x"3" and w_Cout = '0') report "bad with 1 + 1 + 1" severity failure; -- one in the middle 
 		wait; -- wait forever
 	end process;	
 	-----------------------------------------------------	
